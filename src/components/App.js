@@ -1,23 +1,19 @@
 import React from 'react';
+import { Route, Switch } from 'react-router-dom'
 import './App.scss';
+import Main from './Main'
+import Portfolio from './Portfolio'
+import Item from './Item'
+import Contact from './Contact'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Switch>
+      <Route exact path="/" component={Main} />
+      <Route path="/portfolio" component={Portfolio} />
+      <Route path="/item/:id" component={Item} />
+      <Route path="/contact" component={Contact} />
+    </Switch>
   );
 }
 
