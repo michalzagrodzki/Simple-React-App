@@ -6,15 +6,17 @@ import Portfolio from './Portfolio'
 import Item from './Item'
 import Contact from './Contact'
 
-function App() {
-  return (
-    <Switch>
-      <Route exact path="/" component={Main} />
-      <Route path="/portfolio" component={Portfolio} />
-      <Route path="/item/:id" component={Item} />
-      <Route path="/contact" component={Contact} />
-    </Switch>
-  );
+class App extends React.Component {
+  render() {
+    return (
+      <Switch>
+        <Route exact path="/" component={Main} />
+        <Route path="/portfolio" component={Portfolio} />
+        <Route path="/item/:id" component={Item} />
+        <Route path="/contact" component={Contact} />
+      </Switch>
+    );
+  }
 }
 
 export default App;

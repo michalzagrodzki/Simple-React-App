@@ -1,11 +1,25 @@
 import React from 'react';
 
-function Portfolio() {
-  return (
-    <div className="Main">
-      <h1>Portfolio Component</h1>
-    </div>
-  );
+class Portfolio extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+
+  }
+
+  componentWillUnmount() {
+
+  }
+
+  render() {
+    return (
+      <div className="Main">
+        <h1>Portfolio Component</h1>
+      </div>
+    );
+  }
 }
 
 export default Portfolio;

@@ -1,12 +1,26 @@
 import React from 'react';
 
-function Item(props) {
-  return (
-    <div className="Main">
-      <h1>Item Component</h1>
-      <p>{props.match.params.id}</p>
-    </div>
-  );
+class Item extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+
+  }
+
+  componentWillUnmount() {
+
+  }
+
+  render() {
+    return (
+      <div className="Main">
+        <h1>Item Component</h1>
+        <p>{this.props.match.params.id}</p>
+      </div>
+    );
+  }
 }
 
 export default Item;
