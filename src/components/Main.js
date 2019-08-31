@@ -5,8 +5,38 @@ class Main extends React.Component {
   constructor() {
     super();
     this.state = {
+      title: '',
+      message: {
+        title: '',
+        subtitle: ''
+      },
       products: [],
-      error: ''
+      productAction: {
+        button: ''
+      },
+      contact: {
+        title: '',
+        subtitle: '',
+        button: ''
+      },
+      sections: {
+        message: '',
+        products: '',
+        contact: ''
+      },
+      form: {
+        name: '',
+        email: '',
+        message: ''
+      },
+      error: {
+        message: ''
+      },
+      subimittedMessage: {
+        name: '',
+        email: '',
+        message: ''
+      }
     };
   }
 
@@ -19,7 +49,7 @@ class Main extends React.Component {
       },
       (error) => {
         this.setState({
-          error: error
+          'error.message': error
         });
       });
   }
@@ -33,10 +63,11 @@ class Main extends React.Component {
   }
 
   render() {
+    const { products } = this.state;
     return (
 	    <div className="Main">
 	      <h1>Main Component</h1>
-        { this.state.products.map(product => 
+        { products.map(product => 
           <div key={product.id}>{product.name}</div>) 
         }
 	    </div>
