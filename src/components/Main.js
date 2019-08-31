@@ -38,6 +38,8 @@ class Main extends React.Component {
         message: ''
       }
     };
+
+    this.postMessage = this.postMessage.bind(this);
   }
 
   getProducts () {
