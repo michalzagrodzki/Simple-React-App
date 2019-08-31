@@ -84,6 +84,24 @@ class Main extends React.Component {
 
   componentDidMount() {
     this.getProducts();
+    this.setState({
+      title: 'Simple Vue App',
+      message: {
+        title: 'This is example app using vue.js',
+        subtitle: 'this app shows capabilities of using vue in simple cases'
+      },
+      'productAction.button':'MORE PRODUCTS',
+      contact: {
+        title: 'Take a contact with us',
+        subtitle: 'We are working with different people on different projects',
+        button: 'SEND MESSAGE'
+      },
+      sections: {
+        message: 'VUE APP',
+        products: 'Products',
+        contact: 'Contact'
+      }
+    });
   }
 
   componentWillUnmount() {
