@@ -16,12 +16,12 @@ class Main extends React.Component {
         this.setState({
           products: response.data
         })
-      })
-      .catch((error) => {
+      },
+      (error) => {
         this.setState({
           error: error
-        })
-      })
+        });
+      });
   }
 
   componentDidMount() {
