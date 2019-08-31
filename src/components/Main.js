@@ -54,6 +54,32 @@ class Main extends React.Component {
       });
   }
 
+  postMessage () {
+    if (this.state.form.name !== '' && this.state.form.email !== '' && this.state.form.message !== '') { 
+      axios.post('api/contact',
+      {
+        name: this.state.form.name,
+        email: this.state.form.email,
+        message: this.state.form.message
+      },
+      {
+        'Content-Type': 'application/json'
+      })
+      .then(response => {
+        this.setState({
+          'subimittedMessage.name': this.state.form.name,
+          'subimittedMessage.email': this.state.form.email,
+          'subimittedMessage.message': this.state.form.message,
+        })
+      },
+      (error) => {
+        this.setState({
+          'error.message': error
+        });
+      });
+    }
+  }
+
   componentDidMount() {
     this.getProducts();
   }
