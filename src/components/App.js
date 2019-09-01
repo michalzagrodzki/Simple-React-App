@@ -2,9 +2,9 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import './App.scss';
 import Main from './Main/Main'
-import Portfolio from './Portfolio'
-import Item from './Item'
-import Contact from './Contact'
+import Portfolio from './Portfolio/Portfolio'
+import Item from './Item/Item'
+import Contact from './Contact/Contact'
 
 class App extends React.Component {
   render() {
