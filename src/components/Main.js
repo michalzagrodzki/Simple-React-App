@@ -134,10 +134,14 @@ class Main extends React.Component {
   }
 
   render() {
-    const { products } = this.state;
+    const { title, products } = this.state;
     return (
 	    <div className="Main">
-	      <h1>Main Component</h1>
+        <section>
+          <div className="head-section">
+            <h1>{ title }</h1>
+          </div>
+        </section>
         { products.map(product => 
           <div key={product.id}>{product.name}</div>) 
         }
