@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 
+import "./Main/main.scss";
+
 class Main extends React.Component {
   constructor() {
     super();
