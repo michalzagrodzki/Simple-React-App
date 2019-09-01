@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import './App.scss';
 import Main from './Main'
 import Portfolio from './Portfolio'
@@ -9,12 +9,14 @@ import Contact from './Contact'
 class App extends React.Component {
   render() {
     return (
-      <Switch>
-        <Route exact path="/" component={Main} />
-        <Route path="/portfolio" component={Portfolio} />
-        <Route path="/item/:id" component={Item} />
-        <Route path="/contact" component={Contact} />
-      </Switch>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" component={Main} />
+          <Route path="/portfolio" component={Portfolio} />
+          <Route path="/item/:id" component={Item} />
+          <Route path="/contact" component={Contact} />
+        </Switch>
+      </BrowserRouter>
     );
   }
 }
