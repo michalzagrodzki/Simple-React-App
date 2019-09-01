@@ -22,6 +22,7 @@ it("renders with title", () => {
   act(() => {
     render(<Main />, container);
   });
-  expect(container.querySelector().textContent).toBe('Simple React App');
+  const title = container.querySelector('.head-section h1');
+  expect(title.textContent).toBe('Simple React App');
 });
 
