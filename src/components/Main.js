@@ -51,7 +51,9 @@ class Main extends React.Component {
       },
       (error) => {
         this.setState({
-          'error.message': error
+          error: {
+            message: error 
+          }
         });
       });
   }
@@ -69,14 +71,18 @@ class Main extends React.Component {
       })
       .then(response => {
         this.setState({
-          'subimittedMessage.name': this.state.form.name,
-          'subimittedMessage.email': this.state.form.email,
-          'subimittedMessage.message': this.state.form.message,
+          subimittedMessage: {
+            name: this.state.form.name,
+            email: this.state.form.email,
+            message: this.state.form.message,
+          }
         })
       },
       (error) => {
         this.setState({
-          'error.message': error
+          error: {
+            message: error 
+          }
         });
       });
     }
@@ -90,7 +96,9 @@ class Main extends React.Component {
         title: 'This is example app using vue.js',
         subtitle: 'this app shows capabilities of using vue in simple cases'
       },
-      'productAction.button':'MORE PRODUCTS',
+      productAction: {
+        button:'MORE PRODUCTS'
+      },
       contact: {
         title: 'Take a contact with us',
         subtitle: 'We are working with different people on different projects',
