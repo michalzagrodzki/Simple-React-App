@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import './App.scss';
-import Main from './Main'
+import Main from './Main/Main'
 import Portfolio from './Portfolio'
 import Item from './Item'
 import Contact from './Contact'
