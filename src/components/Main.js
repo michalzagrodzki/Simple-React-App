@@ -108,10 +108,10 @@ class Main extends React.Component {
   componentDidMount() {
     this.getProducts();
     this.setState({
-      title: 'Simple Vue App',
+      title: 'Simple React App',
       message: {
-        title: 'This is example app using vue.js',
-        subtitle: 'this app shows capabilities of using vue in simple cases'
+        title: 'This is example app using react',
+        subtitle: 'this app shows capabilities of using react in simple cases'
       },
       productAction: {
         button:'MORE PRODUCTS'
@@ -122,7 +122,7 @@ class Main extends React.Component {
         button: 'SEND MESSAGE'
       },
       sections: {
-        message: 'VUE APP',
+        message: 'REACT APP',
         products: 'Products',
         contact: 'Contact'
       }
