@@ -42,19 +42,29 @@ class Main extends React.Component {
     this.postMessage = this.postMessage.bind(this);
   }
 
+  CancelToken = axios.CancelToken;
+  source = this.CancelToken.source();
+
   getProducts () {
-    axios.get('/assets/JSON/products.json')
+    axios.get('/assets/JSON/products.json', 
+      { 
+        cancelToken: this.source.token 
+      })
       .then(response => {
         this.setState({
           products: response.data
         })
       },
       (error) => {
-        this.setState({
-          error: {
-            message: error 
-          }
-        });
+        if (axios.isCancel(error)) {
+          console.log('Request canceled: ' + error.message);
+        } else {
+          this.setState({
+            error: {
+              message: error 
+            }
+          });
+        }
       });
   }
 
@@ -65,6 +75,9 @@ class Main extends React.Component {
         name: this.state.form.name,
         email: this.state.form.email,
         message: this.state.form.message
+      },
+      { 
+        cancelToken: this.source.token 
       },
       {
         'Content-Type': 'application/json'
@@ -79,11 +92,15 @@ class Main extends React.Component {
         })
       },
       (error) => {
-        this.setState({
-          error: {
-            message: error 
-          }
-        });
+        if (axios.isCancel(error)) {
+          console.log('Request canceled: ' + error.message);
+        } else {
+          this.setState({
+            error: {
+              message: error 
+            }
+          });
+        }
       });
     }
   }
@@ -113,7 +130,7 @@ class Main extends React.Component {
   }
 
   componentWillUnmount() {
-
+    this.source.cancel("All operations cancelled.");
   }
 
   render() {
