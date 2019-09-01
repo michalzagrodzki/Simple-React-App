@@ -18,12 +18,10 @@ afterEach(() => {
   container = null;
 });
 
-it("renders with or without a name", () => {
+it("renders with title", () => {
   act(() => {
     render(<Main />, container);
   });
-  console.log('showing content of Main container');
-	console.log(container);
-  // expect(container.textContent).toBe("Hey, stranger");
+  expect(container.querySelector().textContent).toBe('Simple React App');
 });
 
