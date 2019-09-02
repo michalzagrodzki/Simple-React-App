@@ -136,7 +136,7 @@ class Main extends React.Component {
   }
 
   render() {
-    const { title, products } = this.state;
+    const { title, sections, message, products } = this.state;
     return (
 	    <div className="Main">
         <section>
@@ -144,6 +144,19 @@ class Main extends React.Component {
             <h1>{ title }</h1>
           </div>
         </section>
+        <section>
+        <div className="message-section">
+          <div className="subtitle-field">
+            <div className="subtitle-header">
+              <h4>{ sections.message }</h4>
+            </div>
+            <div className="subtitle-body">
+              <h2>{ message.title }</h2>
+              <h3>{ message.subtitle }</h3>
+            </div>
+          </div>
+        </div>
+      </section>
         { products.map(product => 
           <div key={product.id}>{product.name}</div>) 
         }
