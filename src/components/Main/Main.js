@@ -137,7 +137,7 @@ class Main extends React.Component {
   }
 
   render() {
-    const { title, sections, message, products, productAction } = this.state;
+    const { title, sections, message, products, productAction, contact, form } = this.state;
     return (
 	    <div className="Main">
         <section>
@@ -182,6 +182,21 @@ class Main extends React.Component {
           <Link to="/portfolio">
             <button onClick="linkToPortfolio()">{ productAction.button }</button>
           </Link>
+        </div>
+      </section>
+      <section>
+        <div className="contact-section">
+          <div className="contact-header">
+            <h4>{ sections.contact }</h4>
+          </div>
+          <h2>{ contact.title }</h2>
+          <h3>{ contact.subtitle }</h3>
+          <form>
+            <input type="text" value={form.name} placeholder="your name" />
+            <input type="text" value={form.email} placeholder="your email" />
+            <input type="text" value={form.message} placeholder="your message" />
+            <button onClick="postMessage()">{ contact.button }</button>
+          </form>
         </div>
       </section>
         
