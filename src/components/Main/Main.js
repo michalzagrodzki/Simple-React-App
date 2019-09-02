@@ -180,7 +180,7 @@ class Main extends React.Component {
         </div>
         <div className="products-footer">
           <Link to="/portfolio">
-            <button onClick="linkToPortfolio()">{ productAction.button }</button>
+            <button>{ productAction.button }</button>
           </Link>
         </div>
       </section>
@@ -195,7 +195,7 @@ class Main extends React.Component {
             <input type="text" value={form.name} placeholder="your name" />
             <input type="text" value={form.email} placeholder="your email" />
             <input type="text" value={form.message} placeholder="your message" />
-            <button onClick="postMessage()">{ contact.button }</button>
+            <button onClick={postMessage}>{ contact.button }</button>
           </form>
         </div>
       </section>
