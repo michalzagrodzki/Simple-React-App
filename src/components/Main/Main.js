@@ -170,7 +170,7 @@ class Main extends React.Component {
           { 
             products.map(product => 
               <Link key={product.id} to={`/item/${product.id}`} className="product-item">
-                  <img src={product.coverImage} />
+                  <img src={product.coverImage} alt=""/>
                   <div className="overlay">
                     <p>{product.name}</p>
                   </div>
