@@ -43,6 +43,9 @@ class Main extends React.Component {
     };
 
     this.postMessage = this.postMessage.bind(this);
+    this.handleName = this.handleName.bind(this);
+    this.handleEmail = this.handleEmail.bind(this);
+    this.handleMessage = this.handleMessage.bind(this);
   }
 
   CancelToken = axios.CancelToken;
@@ -106,6 +109,30 @@ class Main extends React.Component {
         }
       });
     }
+  }
+
+  handleName(event) {
+    this.setState({
+      form: {
+        name: event.target.value
+      }
+    });
+  }
+
+  handleEmail(event) {
+    this.setState({
+      form: {
+        email: event.target.value
+      }
+    });
+  }
+
+  handleMessage(event) {
+    this.setState({
+      form: {
+        message: event.target.value
+      }
+    });
   }
 
   componentDidMount() {
@@ -192,9 +219,9 @@ class Main extends React.Component {
           <h2>{ contact.title }</h2>
           <h3>{ contact.subtitle }</h3>
           <form>
-            <input type="text" value={form.name} placeholder="your name" />
-            <input type="text" value={form.email} placeholder="your email" />
-            <input type="text" value={form.message} placeholder="your message" />
+            <input type="text" value={form.name} onChange={this.handleName} placeholder="your name" />
+            <input type="text" value={form.email} onChange={this.handleEmail} placeholder="your email" />
+            <input type="text" value={form.message} onChange={this.handleMessage} placeholder="your message" />
             <button onClick={postMessage}>{ contact.button }</button>
           </form>
         </div>
