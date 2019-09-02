@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom'
 
 import "./main.scss";
 
@@ -136,7 +137,7 @@ class Main extends React.Component {
   }
 
   render() {
-    const { title, sections, message, products } = this.state;
+    const { title, sections, message, products, productAction } = this.state;
     return (
 	    <div className="Main">
         <section>
@@ -157,9 +158,33 @@ class Main extends React.Component {
           </div>
         </div>
       </section>
-        { products.map(product => 
-          <div key={product.id}>{product.name}</div>) 
-        }
+      <section>
+        <div className="products-section">
+          <div className="product-field">
+            <div className="product-header">
+              <h4>{ sections.products }</h4>
+            </div>
+          </div>
+        </div>
+        <div className="products-row">
+          { 
+            products.map(product => 
+              <Link key={product.id} to={`/item/${product.id}`} className="product-item">
+                  <img src={product.coverImage} />
+                  <div className="overlay">
+                    <p>{product.name}</p>
+                  </div>
+              </Link>
+            )
+          }
+        </div>
+        <div className="products-footer">
+          <Link to="/portfolio">
+            <button onClick="linkToPortfolio()">{ productAction.button }</button>
+          </Link>
+        </div>
+      </section>
+        
 	    </div>
 	  );
   }
