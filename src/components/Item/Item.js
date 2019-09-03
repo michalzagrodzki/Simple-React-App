@@ -93,10 +93,64 @@ class Item extends React.Component {
   }
 
   render() {
+    const { images, title, description, details, products } = this.state;
     return (
       <div className="Item">
-        <h1>Item Component</h1>
-        <p>{this.props.match.params.id}</p>
+        <section>
+          <div className="item-container">
+            <div className="item-images-column">
+              {
+                images.map(image => 
+                  <div key={image.link} className="item-image-item">
+                    <img src={image.link} alt=""/>
+                    <p>{ image.description }</p>
+                  </div>
+                )
+              }
+            </div>
+            <div className="item-description-column">
+              <h1>{ title }</h1>
+              <p>{ description }</p>
+              <div className="item-details">
+                <em>Client</em>
+                <p>{ details.client }</p>
+                <em>Services</em>
+                <p>{ details.services }</p>
+                <em>Year</em>
+                <p>{ details.year }</p>
+                <em>Link</em>
+                <p>{ details.link }</p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section>
+          <div className="item-portfolio-section">
+            <div className="item-portfolio-header">
+              <h4>My works</h4>
+            </div>
+
+            <div className="item-portfolio-list">
+              { 
+                products.map(product => 
+                  <Link key={product.id} to={`/item/${product.id}`} className="item-portfolio-product">
+                    <img src={product.coverImage} alt=""/>
+                    <p>{ product.name }</p>
+                  </Link>
+                )
+              }
+            </div>
+          </div>
+        </section>
+        <section>
+          <div className="item-navigation-section">
+            <h4>&#60; Prev</h4>
+            <Link to={`/portfolio`}>
+              <h4>Portfolio</h4>
+            </Link>
+            <h4>Next &#62;</h4>
+          </div>
+        </section>
       </div>
     );
   }
