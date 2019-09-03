@@ -109,8 +109,6 @@ class Main extends React.Component {
   }
 
   handleFormChange(event) {
-    console.log('target name: ' + event.target.name);
-    console.log('target input: ' + event.target.value);
     this.setState({
       [event.target.name]: event.target.value
     });
