@@ -2,6 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom'
 
+import "./item.scss";
+
 class Item extends React.Component {
   constructor(props) {
     super(props);

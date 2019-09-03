@@ -1,0 +1,191 @@
+@import './../../assets/SCSS/mixin.scss';
+@import './../../assets/SCSS/colors.scss';
+@import './../../assets/SCSS/fonts.scss';
+@import './../../assets/SCSS/variables.scss';
+
+// shared values
+  $side-padding-grid-products-section: 100px;
+  $top-padding-grid-products-section: 50px;
+  $margin-product-item: 18px;
+
+.item-container {
+  display: flex;
+  flex-direction: row;
+  width: 80vw;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 70px;
+}
+
+.item-images-column {
+  width: 50vw;
+}
+
+.item-image-item {
+  padding-bottom: 30px;
+  max-height: 700px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  img {
+    overflow-x: hidden;
+    overflow-y: hidden;
+    object-fit: cover;
+  }
+
+  p {
+    color: map-get($font-basic-colors, "grey");
+    font: {
+      size: 15px;
+      weight: 300;
+      family: $font-primary;
+      style: normal;
+    }
+  }
+}
+
+.item-description-column {
+  margin-left: 50px;
+  width: 20vw;
+  h1 {
+    color: map-get($font-basic-colors, "dark");
+    font: {
+      size: 25px;
+      weight: 700;
+      family: $font-primary;
+    }
+    line-height: 1.3;
+    text-transform: capitalize;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+  }
+
+  p {
+    color: map-get($font-basic-colors, "grey");
+    font: {
+      size: 15px;
+      weight: 300;
+      family: $font-secondary;
+    }
+    line-height: 1.75;
+    margin: 0;
+  }
+}
+
+.item-details {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  line-height: 1.9;
+  padding-top: 25px;
+  margin-top: 25px;
+  @include top-border;
+
+  em {
+    color: map-get($font-basic-colors, "grey");
+    font: {
+      size: 15px;
+      weight: 600;
+      family: $font-primary;
+      style: normal;
+    }
+    min-width: 50%;
+  }
+
+  p {
+    color: map-get($font-basic-colors, "dark");
+    font: {
+      size: 15px;
+      weight: 300;
+      family: $font-secondary;
+      style: normal;
+    }
+    min-width: 50%;
+  }
+}
+
+.item-portfolio-section {
+  @include top-border;
+  margin-top: 40px;
+  padding-top: 40px;
+}
+
+.item-portfolio-header {
+  h4 {
+    color: map-get($font-basic-colors, "dark");
+    font: {
+      size: 14px;
+      weight: 700;
+      family: $font-primary;
+    }
+    line-height: 1.3;
+    text-transform: uppercase;
+    margin: 0;
+    padding-top: 45px;
+    padding-bottom: 60px;
+    text-align: center;
+  }
+}
+
+.item-portfolio-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.item-portfolio-product {
+  margin-left: $margin-product-item;
+  margin-right: $margin-product-item;
+
+  img {
+    width: 350px;
+    height: 230px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  p {
+    @include text-link-animation;
+    color: map-get($font-basic-colors, "dark");
+    font: {
+      size: 15px;
+      weight: 400;
+      family: $font-primary;
+    }
+    line-height: 1.3;
+    text-transform: capitalize;
+    margin: 0;
+    padding-top: 18px;
+    padding-bottom: 36px;
+    text-align: center;
+  }
+}
+
+.item-navigation-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 10vw;
+  padding-right: 10vw;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background-color: map-get($basic-colors, "grey");
+
+  h4 {
+    @include text-link-animation;
+    color: map-get($font-basic-colors, "dark");
+    font: {
+      size: 12px;
+      weight: 300;
+      family: $font-primary;
+    }
+    line-height: 1.3;
+    text-transform: uppercase;
+    margin: 0;
+    text-align: center;
+  }
+}
