@@ -89,7 +89,7 @@ class Item extends React.Component {
   }
 
   componentWillUnmount() {
-
+    this.source.cancel("All operations cancelled.");
   }
 
   render() {
