@@ -54,9 +54,28 @@ class Portfolio extends React.Component {
   }
 
   render() {
+    const { title, subtitle, products } = this.state;
     return (
-      <div className="Main">
-        <h1>Portfolio Component</h1>
+      <div className="Portfolio">
+        <section>
+          <div className="portfolio-head-section">
+            <h1>{ title }</h1>
+            <h2>{ subtitle }</h2>
+          </div>
+        </section>
+        <section>
+          <div className="portfolio-grid-section">
+            <div className="portfolio-grid-header"></div>
+            { 
+              products.map(product => 
+                <Link key={product.id} to={`/item/${product.id}`} className="portfolio-product-item">
+                  <img src={product.coverImage} alt=""/>
+                  <p>{ product.name }</p>
+                </Link>
+              )
+            }
+          </div>
+        </section>
       </div>
     );
   }
