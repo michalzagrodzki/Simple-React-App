@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 
+import "./contact.scss";
+
 class Contact extends React.Component {
   constructor() {
     super();
@@ -125,7 +127,7 @@ class Contact extends React.Component {
               <input name="formName" type="text" value={formName} onChange={this.handleFormChange} placeholder="your name" />
               <input name="formEmail" type="text" value={formEmail} onChange={this.handleFormChange} placeholder="your email" />
               <input name="formMessage" type="text" value={formMessage} onChange={this.handleFormChange} placeholder="your message" />
-              <button type="submit" value="Submit">{ submitText }</button>
+              <button type="submit" value="Submit" className="submit-button">{ submitText }</button>
             </form>
           </div>
         </section>
