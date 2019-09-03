@@ -27,11 +27,9 @@ class Main extends React.Component {
         products: '',
         contact: ''
       },
-      form: {
-        name: '',
-        email: '',
-        message: ''
-      },
+      formName: '',
+      formEmail: '',
+      formMessage: '',
       error: {
         message: ''
       },
@@ -43,9 +41,7 @@ class Main extends React.Component {
     };
 
     this.postMessage = this.postMessage.bind(this);
-    this.handleName = this.handleName.bind(this);
-    this.handleEmail = this.handleEmail.bind(this);
-    this.handleMessage = this.handleMessage.bind(this);
+    this.handleFormChange = this.handleFormChange.bind(this);
   }
 
   CancelToken = axios.CancelToken;
@@ -74,13 +70,14 @@ class Main extends React.Component {
       });
   }
 
-  postMessage () {
-    if (this.state.form.name !== '' && this.state.form.email !== '' && this.state.form.message !== '') { 
+  postMessage (event) {
+    event.preventDefault();
+    if (this.state.formName !== '' && this.state.formEmail !== '' && this.state.formMessage !== '') {
       axios.post('api/contact',
       {
-        name: this.state.form.name,
-        email: this.state.form.email,
-        message: this.state.form.message
+        name: this.state.formName,
+        email: this.state.formEmaill,
+        message: this.state.formMessage
       },
       { 
         cancelToken: this.source.token 
@@ -91,9 +88,9 @@ class Main extends React.Component {
       .then(response => {
         this.setState({
           subimittedMessage: {
-            name: this.state.form.name,
-            email: this.state.form.email,
-            message: this.state.form.message,
+            name: this.state.formName,
+            email: this.state.formEmail,
+            message: this.state.formMessage,
           }
         })
       },
@@ -111,27 +108,11 @@ class Main extends React.Component {
     }
   }
 
-  handleName(event) {
+  handleFormChange(event) {
+    console.log('target name: ' + event.target.name);
+    console.log('target input: ' + event.target.value);
     this.setState({
-      form: {
-        name: event.target.value
-      }
-    });
-  }
-
-  handleEmail(event) {
-    this.setState({
-      form: {
-        email: event.target.value
-      }
-    });
-  }
-
-  handleMessage(event) {
-    this.setState({
-      form: {
-        message: event.target.value
-      }
+      [event.target.name]: event.target.value
     });
   }
 
@@ -164,7 +145,7 @@ class Main extends React.Component {
   }
 
   render() {
-    const { title, sections, message, products, productAction, contact, form } = this.state;
+    const { title, sections, message, products, productAction, contact, formName, formEmail, formMessage } = this.state;
     return (
 	    <div className="Main">
         <section>
@@ -218,11 +199,11 @@ class Main extends React.Component {
           </div>
           <h2>{ contact.title }</h2>
           <h3>{ contact.subtitle }</h3>
-          <form>
-            <input type="text" value={form.name} onChange={this.handleName} placeholder="your name" />
-            <input type="text" value={form.email} onChange={this.handleEmail} placeholder="your email" />
-            <input type="text" value={form.message} onChange={this.handleMessage} placeholder="your message" />
-            <button onClick={postMessage}>{ contact.button }</button>
+          <form onSubmit={ this.postMessage }>
+            <input name="formName" type="text" value={formName} onChange={this.handleFormChange} placeholder="your name" />
+            <input name="formEmail" type="text" value={formEmail} onChange={this.handleFormChange} placeholder="your email" />
+            <input name="formMessage" type="text" value={formMessage} onChange={this.handleFormChange} placeholder="your message" />
+            <button type="submit" value="Submit">{ contact.button }</button>
           </form>
         </div>
       </section>
