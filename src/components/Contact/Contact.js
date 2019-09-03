@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom'
 
 class Contact extends React.Component {
   constructor() {
@@ -110,9 +109,41 @@ class Contact extends React.Component {
   }
 
   render() {
+    const { title, caption, submitText, contact, formName, formEmail, formMessage } = this.state;
     return (
-	    <div className="Main">
-	      <h1>Contact Component</h1>
+	    <div className="Contact">
+	      <section>
+          <div className="contact-head-section">
+            <h1>{ title }</h1>
+          </div>
+        </section>
+        <section>
+          <div className="contact-form-section">
+            <h2>{ caption.subtitle }</h2>
+            <h4>{ caption.text }</h4>
+            <form onSubmit={ this.postMessage }>
+              <input name="formName" type="text" value={formName} onChange={this.handleFormChange} placeholder="your name" />
+              <input name="formEmail" type="text" value={formEmail} onChange={this.handleFormChange} placeholder="your email" />
+              <input name="formMessage" type="text" value={formMessage} onChange={this.handleFormChange} placeholder="your message" />
+              <button type="submit" value="Submit">{ submitText }</button>
+            </form>
+          </div>
+        </section>
+        <section>
+          <div className="contact-address-section">
+            <h2>{ contact.title }</h2>
+            <h4>{ contact.description }</h4>
+            <p>{ contact.street }</p>
+            <p>{ contact.city }</p>
+            <p>{ contact.postcode }</p>
+            <div className="contact-details">
+              <em>Email:</em>
+              <p>{ contact.email }</p>
+              <em>Phone:</em>
+              <p>{ contact.phone }</p>
+            </div>
+          </div>
+        </section>
 	    </div>
 	  );
   }
