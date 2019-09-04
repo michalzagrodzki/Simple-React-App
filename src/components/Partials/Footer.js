@@ -41,7 +41,9 @@ class Footer extends React.Component {
     const { facebook, twitter, linkedin } = this.state;
     return (
       <div className="footer-section">
-        Footer
+        <a href={ facebook.value }>{ facebook.name }</a>
+        <a href={ twitter.value }>{ twitter.name }</a>
+        <a href={ linkedin.value }>{ linkedin.name }</a>
       </div>
     );
   }
