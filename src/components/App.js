@@ -12,14 +12,14 @@ class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
-      <Navbar></Navbar>
+        <Navbar/>
         <Switch>
           <Route exact path="/" component={Main} />
           <Route path="/portfolio" component={Portfolio} />
           <Route path="/item/:id" component={Item} />
           <Route path="/contact" component={Contact} />
         </Switch>
-        <Footer></Footer>
+        <Footer/>
       </BrowserRouter>
     );
   }
