@@ -38,14 +38,18 @@ class Navbar extends React.Component {
   }
 
   render() {
-    const { links } = this.state;
+    const { home, portfolio, contact } = this.state;
     return (
-      <div className="Navbar">
-        <section>
-          <div className="">
-            <h1>Navbar</h1>
-          </div>
-        </section>
+      <div className="navbar-section">
+        <Link to={'/'}>
+          <p>{ home.name }</p>  
+        </Link>
+        <Link to={'/portfolio'}>
+          <p>{ portfolio.name }</p>  
+        </Link>
+        <Link to={'/contact'}>
+          <p>{ contact.name }</p>  
+        </Link>
       </div>
     );
   }
