@@ -6,11 +6,11 @@ import Portfolio from './Portfolio/Portfolio'
 import Item from './Item/Item'
 import Contact from './Contact/Contact'
 import Navbar from './Partials/Navbar'
+import Footer from './Partials/Footer'
 
 class App extends React.Component {
   render() {
     return (
-      
       <BrowserRouter>
       <Navbar></Navbar>
         <Switch>
@@ -19,6 +19,7 @@ class App extends React.Component {
           <Route path="/item/:id" component={Item} />
           <Route path="/contact" component={Contact} />
         </Switch>
+        <Footer></Footer>
       </BrowserRouter>
     );
   }
