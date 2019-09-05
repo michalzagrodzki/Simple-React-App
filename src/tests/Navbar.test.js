@@ -31,3 +31,29 @@ it("renders with home link", () => {
   const title = container.querySelector('.navbar-section a p');
   expect(title.textContent).toBe('Home');
 });
+
+it("renders with portfolio link", () => {
+  act(() => {
+    render(
+      <MemoryRouter>
+        <Navbar />
+      </MemoryRouter>,
+      container
+    );
+  });
+  const title = container.querySelector('.navbar-section a:nth-child(2) p');
+  expect(title.textContent).toBe('Portfolio');
+});
+
+it("renders with contact link", () => {
+  act(() => {
+    render(
+      <MemoryRouter>
+        <Navbar />
+      </MemoryRouter>,
+      container
+    );
+  });
+  const title = container.querySelector('.navbar-section a:nth-child(3) p');
+  expect(title.textContent).toBe('Contact');
+});
