@@ -31,3 +31,29 @@ it("renders with facebook link", () => {
   const title = container.querySelector('.footer-section a');
   expect(title.textContent).toBe('Facebook');
 });
+
+it("renders with twitter link", () => {
+  act(() => {
+    render(
+      <MemoryRouter>
+        <Footer />
+      </MemoryRouter>,
+      container
+    );
+  });
+  const title = container.querySelector('.footer-section a:nth-child(2)');
+  expect(title.textContent).toBe('Twitter');
+});
+
+it("renders with linkedin link", () => {
+  act(() => {
+    render(
+      <MemoryRouter>
+        <Footer />
+      </MemoryRouter>,
+      container
+    );
+  });
+  const title = container.querySelector('.footer-section a:nth-child(3)');
+  expect(title.textContent).toBe('Linkedin');
+});
