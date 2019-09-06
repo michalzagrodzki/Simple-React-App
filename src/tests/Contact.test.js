@@ -57,3 +57,16 @@ it("renders with caption text", () => {
   const title = container.querySelector('.contact-form-section h4');
   expect(title.textContent).toBe('Ecstatic advanced and procured civility not absolute put continue. Overcame breeding or my concerns removing desirous so absolute. My melancholy unpleasing imprudence considered in advantages so impression.');
 });
+
+it("renders with contact title", () => {
+  act(() => {
+    render(
+      <MemoryRouter>
+        <Contact />
+      </MemoryRouter>, 
+      container
+    );
+  });
+  const title = container.querySelector('.contact-address-section h2');
+  expect(title.textContent).toBe('Office');
+});
