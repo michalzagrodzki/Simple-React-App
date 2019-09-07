@@ -23,10 +23,31 @@ class Item extends React.Component {
         message: ''
       }
     };
+
+    this.previousPage = this.previousPage.bind(this);
+    this.nextPage = this.nextPage.bind(this);
   }
 
   CancelToken = axios.CancelToken;
   source = this.CancelToken.source();
+
+  previousPage () {
+    const currentRoute = parseInt(this.props.match.params.id, 10);
+    const previousRoute = currentRoute - 1;
+    if (previousRoute > 0) {
+      this.props.history.push(previousRoute.toString());
+    }
+  }
+
+  nextPage () {
+    const currentRoute = parseInt(this.props.match.params.id, 10);
+    const nextRoute = currentRoute + 1;
+    const routeLimit = this.state.productsLength;
+    if (nextRoute <= routeLimit) {
+      console.log('redirecintg')
+      this.props.history.push(nextRoute.toString());
+    }
+  }
 
   getProduct () {
     axios.get('/assets/JSON/products.json', 
@@ -146,11 +167,11 @@ class Item extends React.Component {
         </section>
         <section>
           <div className="item-navigation-section">
-            <h4>&#60; Prev</h4>
+            <h4 onClick={this.previousPage}>&#60; Prev</h4>
             <Link to={`/portfolio`}>
               <h4>Portfolio</h4>
             </Link>
-            <h4>Next &#62;</h4>
+            <h4 onClick={this.nextPage}>Next &#62;</h4>
           </div>
         </section>
       </div>
