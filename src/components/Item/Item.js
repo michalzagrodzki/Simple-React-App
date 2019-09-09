@@ -49,18 +49,18 @@ class Item extends React.Component {
     }
   }
 
-  getProduct () {
-    axios.get('/assets/JSON/products.json', 
+  getProduct (vm, url) {
+    axios.get(url,
       { 
-        cancelToken: this.source.token 
+        cancelToken: vm.source.token 
       })
       .then(response => {
-        const idNumber = parseInt(this.props.match.params.id, 10);
+        const idNumber = parseInt(vm.props.match.params.id, 10);
         const selectedItem = response.data.find((item) => {
           return item.id === idNumber
         });
 
-        this.setState({
+        vm.setState({
           title: selectedItem.name,
           description: selectedItem.description,
           images: selectedItem.images,
@@ -71,7 +71,7 @@ class Item extends React.Component {
         if (axios.isCancel(error)) {
           console.log('Request canceled: ' + error.message);
         } else {
-          this.setState({
+          vm.setState({
             error: {
               message: error 
             }
@@ -80,15 +80,15 @@ class Item extends React.Component {
       });
   }
 
-  getLimitedProducts () {
-    axios.get('/assets/JSON/products.json', 
+  getLimitedProducts (vm, url) {
+    axios.get(url, 
       { 
-        cancelToken: this.source.token 
+        cancelToken: vm.source.token 
       })
       .then(response => {
         const productsLength = parseInt(response.data.length, 10)
         const slicedProducts = response.data.slice(0, 3)
-        this.setState({
+        vm.setState({
           products: slicedProducts,
           productsLength: productsLength
         })
@@ -97,7 +97,7 @@ class Item extends React.Component {
         if (axios.isCancel(error)) {
           console.log('Request canceled: ' + error.message);
         } else {
-          this.setState({
+          vm.setState({
             error: {
               message: error 
             }
@@ -107,8 +107,8 @@ class Item extends React.Component {
   }
 
   componentDidMount() {
-    this.getProduct();
-    this.getLimitedProducts();
+    this.getProduct(this, '/assets/JSON/products.json');
+    this.getLimitedProducts(this, '/assets/JSON/products.json');
   }
 
   componentWillUnmount() {

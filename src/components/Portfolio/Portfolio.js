@@ -20,13 +20,13 @@ class Portfolio extends React.Component {
   CancelToken = axios.CancelToken;
   source = this.CancelToken.source();
 
-  getProducts () {
-    axios.get('/assets/JSON/products.json', 
+  getProducts (vm, url) {
+    axios.get(url, 
       { 
-        cancelToken: this.source.token 
+        cancelToken: vm.source.token 
       })
       .then(response => {
-        this.setState({
+        vm.setState({
           products: response.data
         })
       },
@@ -34,7 +34,7 @@ class Portfolio extends React.Component {
         if (axios.isCancel(error)) {
           console.log('Request canceled: ' + error.message);
         } else {
-          this.setState({
+          vm.setState({
             error: {
               message: error 
             }
@@ -44,7 +44,7 @@ class Portfolio extends React.Component {
   }
 
   componentDidMount() {
-    this.getProducts();
+    this.getProducts(this, '/assets/JSON/products.json');
     this.setState({
       title: 'Products Portfolio',
       subtitle: 'Complete list of my products'
