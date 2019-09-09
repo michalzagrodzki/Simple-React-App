@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom'
+import { getProducts } from './../../services/api'
 
 import "./main.scss";
 
@@ -47,29 +48,6 @@ class Main extends React.Component {
   CancelToken = axios.CancelToken;
   source = this.CancelToken.source();
 
-  getProducts (vm, url) {
-    axios.get(url, 
-      { 
-        cancelToken: vm.source.token 
-      })
-      .then(response => {
-        vm.setState({
-          products: response.data
-        })
-      },
-      (error) => {
-        if (axios.isCancel(error)) {
-          console.log('Request canceled: ' + error.message);
-        } else {
-          vm.setState({
-            error: {
-              message: error 
-            }
-          });
-        }
-      });
-  }
-
   postMessage (event) {
     event.preventDefault();
     if (this.state.formName !== '' && this.state.formEmail !== '' && this.state.formMessage !== '') {
@@ -115,7 +93,7 @@ class Main extends React.Component {
   }
 
   componentDidMount() {
-    this.getProducts(this, '/assets/JSON/products.json');
+    getProducts(this, '/assets/JSON/products.json');
     this.setState({
       title: 'Simple React App',
       message: {

@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom'
+import { getProduct, getLimitedProducts } from './../../services/api'
 
 import "./item.scss";
 
@@ -49,66 +50,9 @@ class Item extends React.Component {
     }
   }
 
-  getProduct (vm, url) {
-    axios.get(url,
-      { 
-        cancelToken: vm.source.token 
-      })
-      .then(response => {
-        const idNumber = parseInt(vm.props.match.params.id, 10);
-        const selectedItem = response.data.find((item) => {
-          return item.id === idNumber
-        });
-
-        vm.setState({
-          title: selectedItem.name,
-          description: selectedItem.description,
-          images: selectedItem.images,
-          details: selectedItem.details
-        })
-      },
-      (error) => {
-        if (axios.isCancel(error)) {
-          console.log('Request canceled: ' + error.message);
-        } else {
-          vm.setState({
-            error: {
-              message: error 
-            }
-          });
-        }
-      });
-  }
-
-  getLimitedProducts (vm, url) {
-    axios.get(url, 
-      { 
-        cancelToken: vm.source.token 
-      })
-      .then(response => {
-        const productsLength = parseInt(response.data.length, 10)
-        const slicedProducts = response.data.slice(0, 3)
-        vm.setState({
-          products: slicedProducts,
-          productsLength: productsLength
-        })
-      },
-      (error) => {
-        if (axios.isCancel(error)) {
-          console.log('Request canceled: ' + error.message);
-        } else {
-          vm.setState({
-            error: {
-              message: error 
-            }
-          });
-        }
-      });
-  }
-
   componentDidMount() {
-    this.getProduct(this, '/assets/JSON/products.json');
-    this.getLimitedProducts(this, '/assets/JSON/products.json');
+    getProduct(this, '/assets/JSON/products.json');
+    getLimitedProducts(this, '/assets/JSON/products.json');
   }
 
   componentWillUnmount() {
