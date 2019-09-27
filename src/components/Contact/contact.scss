@@ -31,9 +31,7 @@
   width: 35vw;
   flex-direction: column;
   justify-content: center;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: -10vh;
+  margin: -10vh auto 0 auto;
   padding: 80px 10vw 35px 10vw;
   @include field-shadow;
 
@@ -45,11 +43,9 @@
       weight: 300;
     }
     line-height: 1.2;
-    margin-bottom: 40px;
+    margin: 0 auto 40px auto;
     text-align: center;
     width: 75%;
-    margin-left: auto;
-    margin-right: auto;
   }
   h4 {
     color: map-get($font-basic-colors, "grey");
@@ -67,10 +63,12 @@
     align-items: center;
 
     input {
-      font-family: $font-secondary;
+      font: {
+        family: $font-secondary;
+        size: 18px;
+        weight: 400;
+      };
       color: map-get($font-basic-colors, "dark");
-      font-size: 18px;
-      font-weight: 400;
       padding: 16px 30px;
       margin: 10px 0 10px 0;
       width: 30vw;
@@ -97,9 +95,7 @@
   width: 35vw;
   flex-direction: column;
   justify-content: center;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 80px;
+  margin: 0 auto 80px auto;
   padding: 80px 10vw 35px 10vw;
   @include top-border;
   @include field-shadow;
@@ -112,11 +108,9 @@
       weight: 300;
     }
     line-height: 1.2;
-    margin-bottom: 40px;
+    margin: 0 auto 40px auto;
     text-align: center;
     width: 100%;
-    margin-left: auto;
-    margin-right: auto;
   }
 
   h4 {
@@ -162,6 +156,7 @@
     line-height: 2;
     width: 25%;
   }
+  
   p {
     color: map-get($font-basic-colors, "dark");
     font: {
