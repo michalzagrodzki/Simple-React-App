@@ -2,6 +2,7 @@
 @import './../../assets/SCSS/colors.scss';
 @import './../../assets/SCSS/fonts.scss';
 @import './../../assets/SCSS/variables.scss';
+@import './../../assets/SCSS/mediaQueries.scss';
 
 // shared values
   $side-padding-grid-products-section: 100px;
@@ -180,4 +181,16 @@
     margin: 0;
     text-align: center;
   }
+}
+
+@media #{$screen-320-374} {
+
+}
+
+@media #{$screen-375-719} {
+
+}
+
+@media #{$screen-720-1023} {
+
 }
