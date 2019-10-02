@@ -99,6 +99,29 @@
 
 @media #{$screen-375-719} {
 
+  .portfolio-head-section {
+    height: 50vh;
+
+    h1 {
+      font: {
+        size: 60px;
+      }
+      line-height: .95;
+      text-align: center;
+      width: 100vw;
+      letter-spacing: -3px;
+      margin-bottom: 15px;
+    }
+
+    h2 {
+      font: {
+        size: 25px;
+      }
+      line-height: 1.1;
+      width: 50vw;
+    }
+  }
+
 }
 
 @media #{$screen-720-1023} {
