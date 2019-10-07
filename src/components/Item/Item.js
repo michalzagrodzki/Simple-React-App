@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom'
 import { getProduct, getLimitedProducts } from './../../services/api'
+import { previousPage, nextPage } from './../../helpers/navigation'
 
 import "./item.scss";
 
@@ -33,21 +34,11 @@ class Item extends React.Component {
   source = this.CancelToken.source();
 
   previousPage () {
-    const currentRoute = parseInt(this.props.match.params.id, 10);
-    const previousRoute = currentRoute - 1;
-    if (previousRoute > 0) {
-      this.props.history.push(previousRoute.toString());
-    }
+    previousPage(this);
   }
 
   nextPage () {
-    const currentRoute = parseInt(this.props.match.params.id, 10);
-    const nextRoute = currentRoute + 1;
-    const routeLimit = this.state.productsLength;
-    if (nextRoute <= routeLimit) {
-      console.log('redirecintg')
-      this.props.history.push(nextRoute.toString());
-    }
+    nextPage(this);
   }
 
   componentDidMount() {
