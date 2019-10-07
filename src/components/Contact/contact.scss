@@ -202,9 +202,17 @@
         padding: 16px 30px;
         margin: 10px 0 10px 0;
         width: 50vw;
-        border: 1px solid grey;
+        border: 1px solid map-get($font-basic-colors, "grey");
       }
     }
+  }
+
+  .submit-button {
+    @include action-button-mobile;
+  }
+
+  .contact-address-section {
+    width: 65vw;
   }
 
 }
